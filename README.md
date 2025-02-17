@@ -1,2 +1,2 @@
-# MSIC.deconvolution
+# MUSIC.deconvolution
 MUSIC deconvolution
