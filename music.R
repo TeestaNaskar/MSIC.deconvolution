@@ -1,3 +1,29 @@
+setwd("/sc/arion/projects/MetaDope/Teesta/Proj_Placenta/singlecell/singlecelldata/MUSIC")
+library(SingleCellExperiment)
+library(data.table)
+library(dplyr)
+library(tidyverse)
+bulk = read.csv("../rat.placenta.RNAseq/counts_STARalign_jan142023/meanGreaterThan10_rawcounts_placenta_rnaseq_january172023.csv")
+rownames(bulk) = bulk[,1]
+bulk = bulk[,2:ncol(bulk)]
+bulk.mtx <- as.matrix(bulk)
+bulk.meta = read.table("../rat.placenta.RNAseq/metadata.txt")
+head(bulk.meta)
+rownames(bulk.meta) = bulk.meta[,1]
+bulk.meta = bulk.meta[,2:ncol(bulk.meta)]
+colnames(bulk.meta) = c("Group","Sex")
+bulk.meta = bulk.meta[2:nrow(bulk.meta),]
+bulk.meta.mtx = as.matrix(bulk.meta)
+single_cell_counts = read.table("../rat_placenta_marsh/GSE152248_AllStages_AllNuclei_datamatrix.txt")
+sc.exprs <- as.matrix(single_cell_counts)
+marsh.meta = read.table("../rat_placenta_marsh/GSE152248_AllStages_AllNuclei_clusters.txt)
+marsh.meta.sc = as.matrix(marsh.meta)  
+
+
+
+
+
+
 single_cell_counts = read.table("rat_placenta_marsh/marsh_placenta_trophoblast_counts.txt")
 sc.exprs <- as.matrix(single_cell_counts)
 marsh.meta = read.table("rat_placenta_marsh/marsh_placenta_trophoblast_metadata.txt")
